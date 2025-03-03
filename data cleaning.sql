@@ -3,7 +3,7 @@
 --viewing the rows and columns and analyisng data. Making note of the changes to be made.
 select * from layoff_raw;
 
--- Making changes to the raw data is not best practice. So we are creating a staging / duplicate table and performing data cleaning there.
+-- Making changes to the raw data is not best practice. So we are creating a staging / duplicate table and perform data cleaning there.
 
 --create a similar table like 'layoff_raw'.
 create or replace table layoff_staging
