@@ -3,7 +3,7 @@
 --viewing the rows and columns and analyisng data. Making note of the changes to be made.
 select * from layoff_raw;
 
--- Making changes to the raw data is not best practice. So we are creating a staging / duplicate table and perform data cleaning there.
+-- Making changes to the raw data is not best practice. So we are creating a staging / duplicate table and performing data cleaning there.
 
 --create a similar table like 'layoff_raw'.
 create or replace table layoff_staging
@@ -111,6 +111,17 @@ set layoff_date = date_dup--::varchar(50);
 --Step 4: Drop the Old Column
 alter table layoff_staging2 drop column date_dup;
 
+-- Changing the datatype of 'Total_laid_off' from VARCHAR to NUMBER
+
+ALTER TABLE layoff_staging2 ADD COLUMN laid_off_new NUMBER;
+
+UPDATE layoff_staging2
+SET laid_off_new = TRY_CAST(total_laid_off AS NUMBER(10,2));
+
+ALTER TABLE layoff_staging2 DROP COLUMN total_laid_off;
+
+ALTER TABLE layoff_staging2 RENAME COLUMN laid_off_new TO total_laid_off;
+
 -- 3. NULL OR BLANK VALUES
 
 -- Using JOIN to find the industry that were blank
@@ -141,6 +152,24 @@ ON target.company = source.company
 AND (target.industry IS NULL OR target.industry = 'NULL' OR target.industry = '')
 WHEN MATCHED THEN 
 UPDATE SET target.industry = source.industry;
+
+--set varchar 'NULL' to value NULL
+select * 
+from layoff_staging2 
+where total_laid_off = 'NULL';
+
+UPDATE layoff_staging2
+SET total_laid_off = NULL
+WHERE total_laid_off = 'NULL';
+
+select * 
+from layoff_staging2 
+where percentage_laid_off ='NULL';
+
+UPDATE layoff_staging2
+SET percentage_laid_off = NULL
+WHERE percentage_laid_off = 'NULL';
+
 
 --4. REMOVE ANY ROWS / COLUMNS
 
