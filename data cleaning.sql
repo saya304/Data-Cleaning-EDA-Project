@@ -17,7 +17,8 @@ select * from layoff_staging
 
 --1. REMOVING DUPLICATES
 
---create a CTE to display all the duplicate rows. This is done by using window function 'row_number()' to display row number. The duplicate rows are numbered '2' 
+--create a CTE to display all the duplicate rows. This is done by using window function 'row_number()' to display row number. 
+--The duplicate rows are numbered '2' 
 with duplicate_cte as (
 select *,
 row_number () over (partition by company, location, industry, total_laid_off, date, stage, country, funds_raised_millions order by country) as row_num
@@ -97,7 +98,8 @@ order by 1
 update layoff_staging2
 set date_dup = to_date (date_dup, 'YYYY-MM-DD')
 
---In snowflake, it is not possible to directly change data type from VARCHAR to DATE. So we create a duplicate column, copy the data and delete the original column
+--In snowflake, it is not possible to directly change data type from VARCHAR to DATE. 
+--So we create a duplicate column, copy the data and delete the original column
 --Step 1: Rename the Existing Column
 alter table layoff_staging2 rename column date to date_dup;
 
@@ -173,7 +175,8 @@ WHERE percentage_laid_off = 'NULL';
 
 --4. REMOVE ANY ROWS / COLUMNS
 
---Most of the Exploratory Data Analysis is based on the 'total_laid_off' and 'percentage_laid_off'. Remove the columns that have both the two columns blank or NULL
+--Most of the Exploratory Data Analysis is based on the 'total_laid_off' and 'percentage_laid_off'. 
+--Remove the columns that have both the two columns blank or NULL
 select * 
 from layoff_staging2
 where (total_laid_off is null or total_laid_off = ''or total_laid_off = 'NULL' )
