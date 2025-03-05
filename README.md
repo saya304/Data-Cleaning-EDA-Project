@@ -6,7 +6,7 @@ This project focuses on **data cleaning, transformation, and exploratory data an
 ---
 
 ## 📂 Files in This Repository  
-- 📄 [data cleaning.sql](data_cleaning.sql) – SQL scripts for **cleaning and transforming raw data**  
+- 📄 [data cleaning.sql](https://github.com/saya304/Data-Cleaning-and-Exploratory-Data-Analysis/blob/main/data%20cleaning.sql) – SQL scripts for **cleaning and transforming raw data**  
 - 📄 [exploratory data analysis.sql](exploratory_data_analysis.sql) – SQL queries for **data exploration & insights**    
 
 ---
