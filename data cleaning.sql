@@ -124,6 +124,28 @@ ALTER TABLE layoff_staging2 DROP COLUMN total_laid_off;
 
 ALTER TABLE layoff_staging2 RENAME COLUMN laid_off_new TO total_laid_off;
 
+--Changing the datatype of 'percentage_laid_off' from VARCHAR to NUMBER
+
+ALTER TABLE layoff_staging2 ADD COLUMN percent_new NUMBER;
+
+UPDATE layoff_staging2
+SET percent_new = TRY_CAST(percentage_laid_off AS NUMBER(10,2));
+
+ALTER TABLE layoff_staging2 DROP COLUMN percentage_laid_off;
+
+ALTER TABLE layoff_staging2 RENAME COLUMN percent_new TO percentage_laid_off;
+
+--Changing the datatype of 'funds_rasied_millions' from VARCHAR to NUMBER
+
+ALTER TABLE layoff_staging2 ADD COLUMN funds_new NUMBER;
+
+UPDATE layoff_staging2
+SET funds_new = TRY_CAST(FUNDS_RAISED_MILLIONS AS NUMBER(10,2)); 
+
+ALTER TABLE layoff_staging2 DROP COLUMN FUNDS_RAISED_MILLIONS;
+
+ALTER TABLE layoff_staging2 RENAME COLUMN funds_new TO FUNDS_RAISED_MILLIONS;
+
 -- 3. NULL OR BLANK VALUES
 
 -- Using JOIN to find the industry that were blank
