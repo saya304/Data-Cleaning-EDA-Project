@@ -6,8 +6,8 @@ This project focuses on **data cleaning, transformation, and exploratory data an
 ---
 
 ## 📂 Files in This Repository  
-- 📄 [data cleaning.sql](https://github.com/saya304/Data-Cleaning-and-Exploratory-Data-Analysis/blob/main/data%20cleaning.sql) – SQL scripts for **cleaning and transforming raw data**  
-- 📄 [exploratory data analysis.sql](https://github.com/saya304/Data-Cleaning-and-Exploratory-Data-Analysis/blob/main/exploratory%20data%20analysis.sql) – SQL queries for **data exploration & insights**    
+- 📄 [`data cleaning.sql`](https://github.com/saya304/Data-Cleaning-and-Exploratory-Data-Analysis/blob/main/data%20cleaning.sql) – SQL scripts for **cleaning and transforming raw data**  
+- 📄 [`exploratory data analysis.sql`](https://github.com/saya304/Data-Cleaning-and-Exploratory-Data-Analysis/blob/main/exploratory%20data%20analysis.sql) – SQL queries for **data exploration & insights**    
 
 ---
 
@@ -19,12 +19,12 @@ This project focuses on **data cleaning, transformation, and exploratory data an
 
 ## 📊 Key Steps & Techniques  
 
-### ✅ 1. Data Cleaning (`data_cleaning.sql`)  
+### ✅ 1. Data Cleaning [`data cleaning.sql`](https://github.com/saya304/Data-Cleaning-and-Exploratory-Data-Analysis/blob/main/data%20cleaning.sql)  
 - Removing duplicates and NULL values  
 - Standardizing data formats  
 - Handling inconsistent entries  
 
-### 📈 2. Exploratory Data Analysis (`exploratory_data_analysis.sql`)  
+### 📈 2. Exploratory Data Analysis [`exploratory data analysis.sql`](https://github.com/saya304/Data-Cleaning-and-Exploratory-Data-Analysis/blob/main/exploratory%20data%20analysis.sql)  
 - Analyzing trends and patterns  
 - Aggregating and summarizing key metrics  
 - Using window functions for deeper insights  
