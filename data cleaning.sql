@@ -14,7 +14,7 @@ insert into layoff_staging
 select * from layoff_raw
 
 select * from layoff_staging
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 --1. REMOVING DUPLICATES
 
 --create a CTE to display all the duplicate rows. This is done by using window function 'row_number()' to display row number. 
@@ -55,6 +55,8 @@ where row_num >1
 delete
 from layoff_staging2
 where row_num >1
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --2. STANDARDIZE THE DATA
 --checked if there is any issue with the data in company. seems like there is no error for now
@@ -146,6 +148,8 @@ ALTER TABLE layoff_staging2 DROP COLUMN FUNDS_RAISED_MILLIONS;
 
 ALTER TABLE layoff_staging2 RENAME COLUMN funds_new TO FUNDS_RAISED_MILLIONS;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- 3. NULL OR BLANK VALUES
 
 -- Using JOIN to find the industry that were blank
@@ -194,6 +198,7 @@ UPDATE layoff_staging2
 SET percentage_laid_off = NULL
 WHERE percentage_laid_off = 'NULL';
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --4. REMOVE ANY ROWS / COLUMNS
 
